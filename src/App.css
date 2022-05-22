@@ -27,6 +27,16 @@ h1{
   }
 }
 
+.app__form{
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background-color: #e9e9eb;
+  width: 100%;
+  margin: 20px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

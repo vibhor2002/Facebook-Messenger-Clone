@@ -51,7 +51,7 @@ function App() {
       <h1>Hang out anytime, anywhere </h1>
       <h2>Welcome {username}</h2>
 
-      <form>
+      <form className='app__form'>
         <FormControl>
           <InputLabel>Enter a Message...</InputLabel>
           <Input value={input} onChange={event => setInput(event.target.value)} />
