@@ -1,10 +1,12 @@
 import './App.css';
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
 import Message from './Message';
 import db from './firebase';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import FlipMove from 'react-flip-move';
+
 
 function App() {
   const [input, setInput] = useState('');
@@ -14,17 +16,17 @@ function App() {
   // use state = variable in react
   // use effect = run on condition
 
-  useEffect(() =>{
+  useEffect(() => {
     db.collection('messages')
-    .orderBy('timestamp','asc')
-    .onSnapshot(snapshot => {
-       setMessages(snapshot.docs.map(doc => doc.data()))
-    })
+      .orderBy('timestamp', 'asc')
+      .onSnapshot(snapshot => {
+        setMessages(snapshot.docs.map(doc => ({id: doc.id, message: doc.data()})))
+      })
   }, [])
 
   useEffect(() => {
-   setUsername(prompt('Please enter your name'));
-  },[])
+    setUsername(prompt('Please enter your name'));
+  }, [])
 
 
   const sendMessage = (event) => {
@@ -40,7 +42,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello There!!!</h1>
+      <img
+        className="messenger__logo"
+        src="https://facebookbrand.com/wp-content/uploads/2020/10/Logo_Messenger_NewBlurple-399x399-1.png?w=120&h=100"
+        alt="facebook messenger logo"
+      />
+      <h1>FACEBOOK MESSENGER </h1>
+      <h1>Hang out anytime, anywhere </h1>
       <h2>Welcome {username}</h2>
 
       <form>
@@ -52,12 +60,14 @@ function App() {
       </form>
 
       {/* Messages */}
+      <FlipMove>
+        {
+          messages.map(({id, message}) => (
+            <Message key={id} username={username} message={message} />
+          ))
+        }
+      </FlipMove>
 
-      {
-        messages.map(message => (
-            <Message username={username} message={message} />
-        ))
-      }
     </div>
   );
 }
