@@ -15,7 +15,9 @@ function App() {
   // use effect = run on condition
 
   useEffect(() =>{
-    db.collection('messages').onSnapshot(snapshot => {
+    db.collection('messages')
+    .orderBy('timestamp','asc')
+    .onSnapshot(snapshot => {
        setMessages(snapshot.docs.map(doc => doc.data()))
     })
   }, [])
