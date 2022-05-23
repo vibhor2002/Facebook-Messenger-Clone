@@ -16,6 +16,20 @@ h1{
   margin: 0 !important;
 }
 
+.app__iconButton {
+  flex: 0;
+}
+
+.app__input{
+ flex: 1;
+}
+
+.app__formControl{
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -28,12 +42,12 @@ h1{
 }
 
 .app__form{
-  padding: 20px;
+  padding: 10px;
   position: fixed;
   bottom: 0;
   z-index: 1;
   background-color: #e9e9eb;
-  width: 100%;
+  width: 96%;
   margin: 20px;
 }
 
