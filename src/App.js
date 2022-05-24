@@ -1,3 +1,6 @@
+// Project Console: https://console.firebase.google.com/project/facebook-messenger-clone-b3543/overview
+// Hosting URL: https://facebook-messenger-clone-b3543.web.app
+
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { FormControl, Input } from '@material-ui/core';
